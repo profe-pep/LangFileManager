@@ -13,8 +13,6 @@ A quick interface to edit language files, for Laravel Backpack.
 > ### Security updates and breaking changes
 > Please **[subscribe to the Backpack Newsletter](http://backpackforlaravel.com/newsletter)** so you can find out about any security updates, breaking changes or major features. We send an email every 1-2 months.
 
-![Edit view for Backpack/LangFileManager](https://dl.dropboxusercontent.com/u/2431352/backpack_langfilemanager.png)
-
 ## Install in Laravel 5.5 / 5.6
 
 ### Step 1. Install via Composer
