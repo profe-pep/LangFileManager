@@ -18,17 +18,17 @@ A quick interface to edit language files, for Laravel Backpack.
 ### Step 1. Install via Composer
 
 ``` bash
-$ composer require backpack/langfilemanager
+composer require backpack/langfilemanager
 ```
 
 ### Step 2. Run the migration, seed and file publishing
 
 ``` bash
-$ php artisan vendor:publish --provider="Backpack\LangFileManager\LangFileManagerServiceProvider" --tag="migrations" #publish the migration file
-$ php artisan migrate
-$ php artisan db:seed --class="Backpack\LangFileManager\database\seeds\LanguageTableSeeder"
-$ php artisan vendor:publish --provider="Backpack\LangFileManager\LangFileManagerServiceProvider" --tag="config" #publish the config file
-$ php artisan vendor:publish --provider="Backpack\LangFileManager\LangFileManagerServiceProvider" --tag="lang" #publish the lang files
+php artisan vendor:publish --provider="Backpack\LangFileManager\LangFileManagerServiceProvider" --tag="migrations" #publish the migration file
+php artisan migrate
+php artisan db:seed --class="Backpack\LangFileManager\database\seeds\LanguageTableSeeder"
+php artisan vendor:publish --provider="Backpack\LangFileManager\LangFileManagerServiceProvider" --tag="config" #publish the config file
+php artisan vendor:publish --provider="Backpack\LangFileManager\LangFileManagerServiceProvider" --tag="lang" #publish the lang files
 ```
 
 
