@@ -20,6 +20,13 @@ All Notable changes to `Backpack LangFileManager` will be documented in this fil
 - Nothing
 
 
+## [1.0.26] - 2019-05-08
+
+### Fixed
+- using ```backpack_auth()``` instead of ```Auth```;
+- bumped required backpack/crud version to 3.5;
+
+
 ## [1.0.25] - 2018-03-13
 
 ### Fixed
