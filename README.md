@@ -8,12 +8,14 @@
 [![Style CI](https://styleci.io/repos/53691643/shield)](https://styleci.io/repos/53691643)
 [![Total Downloads][ico-downloads]][link-downloads]
 
-A quick interface to edit language files, for Laravel Backpack.
+A quick interface to edit language files, for Laravel Backpack. 
+
+_**Note:** this interface allows the admin to directly edit the language files stored in ```resources/lang```. Which might not be a great idea in production, if you have those files commited to git and/or use auto-deployment._
 
 > ### Security updates and breaking changes
 > Please **[subscribe to the Backpack Newsletter](http://backpackforlaravel.com/newsletter)** so you can find out about any security updates, breaking changes or major features. We send an email every 1-2 months.
 
-## Install in Laravel 5.5 / 5.6
+## Install in Laravel 6
 
 ### Step 1. Install via Composer
 
@@ -34,8 +36,6 @@ php artisan vendor:publish --provider="Backpack\LangFileManager\LangFileManagerS
 
 ## Usage
 
-// TODO: change variable to "protected_lang_files" or smth like that
-
 Tell LangFileManager what langfiles NOT to show, in config/backpack/langfilemanager.php:
 
 ``` php
@@ -47,24 +47,11 @@ Tell LangFileManager what langfiles NOT to show, in config/backpack/langfilemana
 Add a menu item for it in resources/views/vendor/backpack/base/inc/sidebar.blade.php:
 
 ```html
-<li class="treeview">
-  <a href="#"><i class="fa fa-globe"></i> <span>Translations</span> <i class="fa fa-angle-left pull-right"></i></a>
-  <ul class="treeview-menu">
-    <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/language') }}"><i class="fa fa-flag-checkered"></i> Languages</a></li>
-    <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/language/texts') }}"><i class="fa fa-language"></i> Site texts</a></li>
-  </ul>
-</li>
-```
-
-or in menu.blade.php:
-```html
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-    <i class="fa fa-globe"></i> Translations<span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class=""><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/language') }}"><i class="fa fa-flag-checkered"></i> Languages</a></li>
-    <li class=""><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/language/texts') }}"><i class="fa fa-language"></i> Site texts</a></li>
+<li class="nav-item nav-dropdown">
+  <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon fa fa-globe"></i> Translations</a>
+  <ul class="nav-dropdown-items">
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('language') }}"><i class="nav-icon fa fa-flag-checkered"></i> Languages</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('language/texts') }}"><i class="nav-icon fa fa-language"></i> Site texts</a></li>
   </ul>
 </li>
 ```
@@ -78,15 +65,6 @@ See http://laravelbackpack.com
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
-
-
-## Testing
-
-// TODO
-
-``` bash
-$ composer test
-```
 
 
 ## Contributing
@@ -113,7 +91,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 ## Hire us
 
-We've spend more than 50.000 hours creating, polishing and maintaining administration panels on Laravel. We've developed e-Commerce, e-Learning, ERPs, social networks, payment gateways and much more. We've worked on admin panels _so much_, that we've created one of the most popular software in its niche - just from making public what was repetitive in our projects.
+We've spend more than 10.000 hours creating, polishing and maintaining administration panels on Laravel. We've developed e-Commerce, e-Learning, ERPs, social networks, payment gateways and much more. We've worked on admin panels _so much_, that we've created one of the most popular software in its niche - just from making public what was repetitive in our projects.
 
 If you are looking for a developer/team to help you build an admin panel on Laravel, look no further. You'll have a difficult time finding someone with more experience & enthusiasm for this. This is _what we do_. [Contact us - let's see if we can work together](https://backpackforlaravel.com/need-freelancer-or-development-team).
 
