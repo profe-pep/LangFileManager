@@ -2,7 +2,6 @@
 
 namespace Backpack\LangFileManager\app\Http\Controllers;
 
-use App\Http\Requests;
 use Illuminate\Http\Request;
 use Backpack\LangFileManager\app\Models\Language;
 use Backpack\LangFileManager\app\Services\LangFiles;
@@ -24,7 +23,7 @@ class LanguageCrudController extends CrudController
         $this->crud->setEntityNameStrings(trans('backpack::langfilemanager.language'), trans('backpack::langfilemanager.languages'));
     }
 
-    public function setupListOperation() 
+    public function setupListOperation()
     {
         $this->crud->setColumns([
             [
