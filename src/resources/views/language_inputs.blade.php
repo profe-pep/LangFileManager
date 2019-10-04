@@ -1,5 +1,5 @@
-<div class="form-group">
-<label for="{{ $key }}" class="col-sm-2 control-label">{{ str_replace(['_', '-'], ' ', $key) }}</label>
+<div class="form-group row">
+	<label for="{{ $key }}" class="col-sm-2 control-label">{{ str_replace(['_', '-'], ' ', $key) }}</label>
 	<div class="hidden-sm hidden-xs col-md-5">
 		<div class="well well-sm">
 			@php

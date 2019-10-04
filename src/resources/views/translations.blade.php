@@ -1,15 +1,26 @@
-@extends('backpack::layout')
+@extends(backpack_view('layouts.top_left'))
+
+@php
+  $defaultBreadcrumbs = [
+    trans('backpack::crud.admin') => backpack_url('dashboard'),
+    $crud->entity_name_plural => url($crud->route),
+    trans('backpack::crud.edit').' '.trans('backpack::langfilemanager.texts') => false,
+  ];
+
+  // if breadcrumbs aren't defined in the CrudController, use the default breadcrumbs
+  $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
+@endphp
 
 @section('header')
-	<section class="content-header">
-	  <h1>
-	    {{ trans('backpack::langfilemanager.translate') }} <span class="text-lowercase">{{ trans('backpack::langfilemanager.site_texts') }}</span>
-	  </h1>
-	  <ol class="breadcrumb">
-	    <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/dashboard') }}">{{ trans('backpack::crud.admin') }}</a></li>
-	    <li><a href="{{ url($crud->route) }}" class="text-capitalize">{{ $crud->entity_name_plural }}</a></li>
-	    <li class="active">{{ trans('backpack::crud.edit') }} {{ trans('backpack::langfilemanager.texts') }}</li>
-	  </ol>
+	<section class="container-fluid">
+	  <h2>
+        <span class="text-capitalize">{{ trans('backpack::langfilemanager.translate') }}</span>
+        <small>{{ trans('backpack::langfilemanager.site_texts') }}.</small>
+
+        @if ($crud->hasAccess('list'))
+          <small><a href="{{ url($crud->route) }}" class="hidden-print font-sm"><i class="fa fa-angle-double-left"></i> {{ trans('backpack::crud.back_to_all') }} <span>{{ $crud->entity_name_plural }}</span></a></small>
+        @endif
+	  </h2>
 	</section>
 @endsection
 
@@ -17,12 +28,7 @@
 <!-- Default box -->
   <div class="box">
   	<div class="box-header with-border">
-	  <h3 class="box-title">{{ ucfirst(trans('backpack::langfilemanager.language')) }}:
-		@foreach ($languages as $lang)
-			@if ($currentLang == $lang->abbr)
-				{{{ $lang->name }}}
-			@endif
-		@endforeach
+	  <h3 class="box-title float-right pr-1">
 		<small>
 			 &nbsp; {{ trans('backpack::langfilemanager.switch_to') }}: &nbsp;
 			<select name="language_switch" id="language_switch">
@@ -34,18 +40,14 @@
 	  </h3>
 	</div>
     <div class="box-body">
-    	<p><em>{!! trans('backpack::langfilemanager.rules_text') !!}</em></p>
-    	<br>
 		<ul class="nav nav-tabs">
 			@foreach ($langFiles as $file)
-			<li class="{{ $file['active'] ? 'active' : '' }}">
-				<a href="{{ $file['url'] }}">{{ $file['name'] }}</a>
+			<li class="nav-item">
+				<a class="nav-link {{ $file['active'] ? 'active' : '' }}" href="{{ $file['url'] }}">{{ $file['name'] }}</a>
 			</li>
 			@endforeach
 		</ul>
-		<div class="clearfix"></div>
-		<br>
-		<section class="lang-inputs">
+		<section class="tab-content p-3 lang-inputs">
 		@if (!empty($fileArray))
 			<form
 				method="post"
@@ -55,16 +57,15 @@
 		  		action="{{ url(config('backpack.base.route_prefix', 'admin')."/language/texts/{$currentLang}/{$currentFile}") }}"
 		  		>
 				{!! csrf_field() !!}
-				<button type="submit" class="btn btn-success submit pull-right hidden-xs hidden-sm" style="margin-top: -60px;">{{ trans('backpack::crud.save') }}</button>
-				<div class="form-group hidden-sm hidden-xs">
-					<div class="col-sm-2 text-right">
-						<h4>{{ trans('backpack::langfilemanager.key') }}</h4>
+				<div class="form-group row">
+					<div class="col-sm-2">
+						<h5>{{ trans('backpack::langfilemanager.key') }}</h5>
 					</div>
 					<div class="hidden-sm hidden-xs col-md-5">
-						<h4>{{ trans('backpack::langfilemanager.language_text', ['language_name' => $browsingLangObj->name]) }}</h4>
+						<h5>{{ trans('backpack::langfilemanager.language_text', ['language_name' => $browsingLangObj->name]) }}</h5>
 					</div>
 					<div class="col-sm-10 col-md-5">
-						<h4>{{ trans('backpack::langfilemanager.language_translation', ['language_name' => $currentLangObj->name]) }}</h4>
+						<h5>{{ trans('backpack::langfilemanager.language_translation', ['language_name' => $currentLangObj->name]) }}</h5>
 					</div>
 				</div>
 				{!! $langfile->displayInputs($fileArray) !!}
@@ -73,12 +74,13 @@
 					<button type="submit" class="btn btn-success submit">{{ trans('backpack::crud.save') }}</button>
 				</div>
 				</form>
-		@else
-			<em>{{ trans('backpack::langfilemanager.empty_file') }}</em>
-		@endif
-	</section>
-    </div><!-- /.box-body -->
-  </div><!-- /.box -->
+				@else
+					<em>{{ trans('backpack::langfilemanager.empty_file') }}</em>
+				@endif
+			</section>
+    </div><!-- /.card-body -->
+    	<p><small>{!! trans('backpack::langfilemanager.rules_text') !!}</small></p>
+  </div><!-- /.card -->
 @endsection
 
 @section('after_scripts')

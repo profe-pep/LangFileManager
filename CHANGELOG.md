@@ -20,6 +20,15 @@ All Notable changes to `Backpack LangFileManager` will be documented in this fil
 - Nothing
 
 
+## [2.0.0] - 2019-10-04
+
+### Added
+- support for Backpack v4.0;
+
+### Removed
+- support for Backpack v3.x;
+
+
 ## [1.0.26] - 2019-05-08
 
 ### Fixed

@@ -7,18 +7,25 @@ use Illuminate\Http\Request;
 use Backpack\LangFileManager\app\Models\Language;
 use Backpack\LangFileManager\app\Services\LangFiles;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-// VALIDATION: change the requests to match your own file names if you need form validation
-use Backpack\LangFileManager\app\Http\Requests\LanguageRequest as StoreRequest;
-use Backpack\LangFileManager\app\Http\Requests\LanguageRequest as UpdateRequest;
+use Backpack\LangFileManager\app\Http\Requests\LanguageRequest;
 
 class LanguageCrudController extends CrudController
 {
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation {store as traitStore; }
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation {destroy as traitDestroy; }
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+
     public function setup()
     {
         $this->crud->setModel("Backpack\LangFileManager\app\Models\Language");
         $this->crud->setRoute(config('backpack.base.route_prefix', 'admin').'/language');
         $this->crud->setEntityNameStrings(trans('backpack::langfilemanager.language'), trans('backpack::langfilemanager.languages'));
+    }
 
+    public function setupListOperation() 
+    {
         $this->crud->setColumns([
             [
                 'name' => 'name',
@@ -35,6 +42,12 @@ class LanguageCrudController extends CrudController
                 'type' => 'boolean',
             ],
         ]);
+        $this->crud->addButton('line', 'translate', 'view', 'langfilemanager::button', 'beginning');
+    }
+
+    public function setupCreateOperation()
+    {
+        $this->crud->setValidation(LanguageRequest::class);
         $this->crud->addField([
             'name' => 'name',
             'label' => trans('backpack::langfilemanager.language_name'),
@@ -67,19 +80,19 @@ class LanguageCrudController extends CrudController
         ]);
     }
 
-    public function store(StoreRequest $request)
+    public function setupUpdateOperation()
+    {
+        return $this->setupCreateOperation();
+    }
+
+    public function store()
     {
         $defaultLang = Language::where('default', 1)->first();
 
         // Copy the default language folder to the new language folder
-        \File::copyDirectory(resource_path('lang/'.$defaultLang->abbr), resource_path('lang/'.$request->input('abbr')));
+        \File::copyDirectory(resource_path('lang/'.$defaultLang->abbr), resource_path('lang/'.request()->input('abbr')));
 
-        return parent::storeCrud();
-    }
-
-    public function update(UpdateRequest $request)
-    {
-        return parent::updateCrud();
+        return $this->traitStore();
     }
 
     /**
@@ -92,7 +105,7 @@ class LanguageCrudController extends CrudController
     public function destroy($id)
     {
         $language = Language::find($id);
-        $destroyResult = parent::destroy($id);
+        $destroyResult = $this->traitDestroy($id);
 
         if ($destroyResult) {
             \File::deleteDirectory(resource_path('lang/'.$language->abbr));
