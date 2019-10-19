@@ -20,6 +20,12 @@ All Notable changes to `Backpack LangFileManager` will be documented in this fil
 - Nothing
 
 
+## [2.0.1] - 2019-10-19
+
+### Added
+- German translation;
+
+
 ## [2.0.0] - 2019-10-04
 
 ### Added
