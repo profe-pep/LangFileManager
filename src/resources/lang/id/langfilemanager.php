@@ -31,7 +31,7 @@ return [
     'site_texts'             => 'Teks situs',
     'switch_to'              => 'Beralih ke',
     'texts'                  => 'Teks',
-    'translate'              => 'Menterjemahkan',
+    'translate'              => 'Terjemahkan',
     'translations'           => 'Terjemahan',
     'native_name'            => 'Nama asli',
 
