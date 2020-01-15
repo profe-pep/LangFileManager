@@ -2,11 +2,11 @@
 
 namespace Backpack\LangFileManager\app\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Backpack\LangFileManager\app\Models\Language;
-use Backpack\LangFileManager\app\Services\LangFiles;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\LangFileManager\app\Http\Requests\LanguageRequest;
+use Backpack\LangFileManager\app\Models\Language;
+use Backpack\LangFileManager\app\Services\LangFiles;
+use Illuminate\Http\Request;
 
 class LanguageCrudController extends CrudController
 {
