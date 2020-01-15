@@ -2,22 +2,13 @@
 
 All Notable changes to `Backpack LangFileManager` will be documented in this file
 
-## NEXT - YYYY-MM-DD
+---
+
+## [2.0.2] - 2020-01-15
 
 ### Added
-- Nothing
-
-### Deprecated
-- Nothing
-
-### Fixed
-- Nothing
-
-### Removed
-- Nothing
-
-### Security
-- Nothing
+- Persian (farsi) translation;
+- Indonesian translation;
 
 
 ## [2.0.1] - 2019-10-19
