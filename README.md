@@ -15,7 +15,7 @@ _**Note:** this interface allows the admin to directly edit the language files s
 > ### Security updates and breaking changes
 > Please **[subscribe to the Backpack Newsletter](http://backpackforlaravel.com/newsletter)** so you can find out about any security updates, breaking changes or major features. We send an email every 1-2 months.
 
-## Install in Laravel 6
+## Install in Backpack 4.1 (Laravel 6 or 7)
 
 ### Step 1. Install via Composer
 
@@ -33,16 +33,39 @@ php artisan vendor:publish --provider="Backpack\LangFileManager\LangFileManagerS
 php artisan vendor:publish --provider="Backpack\LangFileManager\LangFileManagerServiceProvider" --tag="lang" #publish the lang files
 ```
 
+### Step 3. Add menu items for it
 
-## Usage
+Add a menu item for it in resources/views/vendor/backpack/base/inc/sidebar.blade.php:
 
-Tell LangFileManager what langfiles NOT to show, in config/backpack/langfilemanager.php:
-
-``` php
-// Language files to NOT show in the LangFileManager
-//
-'language_ignore' => ['admin', 'pagination', 'reminders', 'validation', 'log', 'crud'],
+```html
+<li class="nav-item nav-dropdown">
+  <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-globe"></i> Translations</a>
+  <ul class="nav-dropdown-items">
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('language') }}"><i class="nav-icon la la-flag-checkered"></i> Languages</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('language/texts') }}"><i class="nav-icon la la-language"></i> Site texts</a></li>
+  </ul>
+</li>
 ```
+
+## Install in Backpack 4.0 (Laravel 5.8, 6 or 7)
+
+### Step 1. Install via Composer
+
+``` bash
+composer require backpack/langfilemanager:"^2.0"
+```
+
+### Step 2. Run the migration, seed and file publishing
+
+``` bash
+php artisan vendor:publish --provider="Backpack\LangFileManager\LangFileManagerServiceProvider" --tag="migrations" #publish the migration file
+php artisan migrate
+php artisan db:seed --class="Backpack\LangFileManager\database\seeds\LanguageTableSeeder"
+php artisan vendor:publish --provider="Backpack\LangFileManager\LangFileManagerServiceProvider" --tag="config" #publish the config file
+php artisan vendor:publish --provider="Backpack\LangFileManager\LangFileManagerServiceProvider" --tag="lang" #publish the lang files
+```
+
+### Step 3. Add menu items for it
 
 Add a menu item for it in resources/views/vendor/backpack/base/inc/sidebar.blade.php:
 
@@ -54,6 +77,16 @@ Add a menu item for it in resources/views/vendor/backpack/base/inc/sidebar.blade
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('language/texts') }}"><i class="nav-icon fa fa-language"></i> Site texts</a></li>
   </ul>
 </li>
+```
+
+## Usage
+
+Tell LangFileManager what langfiles NOT to show, in config/backpack/langfilemanager.php:
+
+``` php
+// Language files to NOT show in the LangFileManager
+//
+'language_ignore' => ['admin', 'pagination', 'reminders', 'validation', 'log', 'crud'],
 ```
 
 Or just try at **your-project-domain/admin/language/texts**
