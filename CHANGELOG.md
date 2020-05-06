@@ -4,7 +4,7 @@ All Notable changes to `Backpack LangFileManager` will be documented in this fil
 
 ---
 
-## [3.0.0] - 2020-04-24
+## [3.0.0] - 2020-05-06
 
 ### Added
 - Support for Backpack 4.1;
