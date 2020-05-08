@@ -3,6 +3,12 @@
 All Notable changes to `Backpack LangFileManager` will be documented in this file
 
 ---
+IMPORTANT
+---
+
+The changelog is now kept inside the repo's Releases tab, on Github. Please check https://github.com/Laravel-Backpack/LangFileManager/releases for all changes after 3.0.0.
+
+---
 
 ## [3.0.0] - 2020-05-06
 
