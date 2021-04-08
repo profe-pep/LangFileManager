@@ -27,9 +27,9 @@
         },
         {
             "name": "Cristian Tabacitu",
-            "email": "hello@tabacitu.ro",
-            "homepage": "http://www.tabacitu.ro",
-            "role": "Contributor"
+            "email": "tabacitu@backpackforlaravel.com",
+            "homepage": "https://backpackforlaravel.com",
+            "role": "Contributor & Maintainer"
         }
     ],
     "require": {
