@@ -97,8 +97,7 @@ class LanguageCrudController extends CrudController
     /**
      * After delete remove also the language folder.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return string
      */
     public function destroy($id)
