@@ -29,7 +29,8 @@ class LangFiles
 
     /**
      * Get the content of a language file as an array sorted ascending.
-     * @return  array|false
+     *
+     * @return array|false
      */
     public function getFileContent()
     {
@@ -47,8 +48,9 @@ class LangFiles
 
     /**
      * Rewrite the file with the modified texts.
-     * @param   array       $postArray  the data received from the form
-     * @return  int
+     *
+     * @param  array  $postArray  the data received from the form
+     * @return int
      */
     public function setFileContent($postArray)
     {
@@ -65,7 +67,8 @@ class LangFiles
     /**
      * Get the language files that can be edited,
      * to ignore a file add it in the config/admin file to language_ignore key.
-     * @return  array
+     *
+     * @return array
      */
     public function getlangFiles()
     {
@@ -94,8 +97,9 @@ class LangFiles
 
     /**
      * Check if all the fields were completed.
-     * @param   array       $postArray      the array containing the data
-     * @return  array
+     *
+     * @param  array  $postArray  the array containing the data
+     * @return array
      */
     public function testFields($postArray)
     {
@@ -122,11 +126,12 @@ class LangFiles
 
     /**
      * Display the form that permits the editing.
-     * @param   array       $fileArray      the array with all the texts
-     * @param   array       $parents        all the ancestor keys of the current key
-     * @param   string      $parent         the parent key of the current key
-     * @param   int         $level          the current level
-     * @return  void
+     *
+     * @param  array  $fileArray  the array with all the texts
+     * @param  array  $parents  all the ancestor keys of the current key
+     * @param  string  $parent  the parent key of the current key
+     * @param  int  $level  the current level
+     * @return void
      */
     public function displayInputs($fileArray, $parents = [], $parent = '', $level = 0)
     {
@@ -157,7 +162,8 @@ class LangFiles
 
     /**
      * Create the array that will be saved in the file.
-     * @param array $postArray The array to be transformed
+     *
+     * @param  array  $postArray  The array to be transformed
      * @return array
      */
     private function prepareContent($postArray)
@@ -194,8 +200,9 @@ class LangFiles
 
     /**
      * Add filters to the values inserted by the user.
-     * @param   string      $str        the string to be sanitized
-     * @return  string
+     *
+     * @param  string  $str  the string to be sanitized
+     * @return string
      */
     private function sanitize($str)
     {
@@ -204,10 +211,11 @@ class LangFiles
 
     /**
      * Set a value in a multidimensional array when knowing the keys.
-     * @param   array       $data       the array that will be modified
-     * @param   array       $keys       the keys (path)
-     * @param   string      $value      the value to be added
-     * @return  array
+     *
+     * @param  array  $data  the array that will be modified
+     * @param  array  $keys  the keys (path)
+     * @param  string  $value  the value to be added
+     * @return array
      */
     private function setArrayValue(&$data, $keys, $value)
     {
