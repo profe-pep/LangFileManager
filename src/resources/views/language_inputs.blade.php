@@ -26,18 +26,18 @@
 				@endphp
 				@if (empty($m))
 					<label for="{{ $chunck }}" class="col-sm-2 control-label">{{ (!$k ? trans('admin.language.singular') : trans('admin.language.plural')).":" }}</label>
-					<textarea name="{{ (empty($parents) ? $key : implode('__', $parents)."__{$key}")."[after][]" }}" class="form-control" rows="2"> {{ $chunck }} </textarea>
+					<textarea name="{{ (empty($parents) ? $key : implode('__', $parents)."__{$key}")."[after][]" }}" class="form-control" rows="2">{{ $chunck }}</textarea>
 					<br>
 				@else
 					<label for="{{ $chunck }}" class="col-sm-2 control-label">{{ (!$k ? trans('admin.language.singular') : trans('admin.language.plural'))." ($m[1]):" }}</label>
 					<input type="hidden" name="{{ (empty($parents) ? $key : implode('__', $parents)."__{$key}")."[before][]" }}" value="{{ $m[1] }}">
-					<textarea name="{{ (empty($parents) ? $key : implode('__', $parents)."__{$key}")."[after][]" }}" class="form-control" rows="2"> {{ $m[2] }} </textarea>
+					<textarea name="{{ (empty($parents) ? $key : implode('__', $parents)."__{$key}")."[after][]" }}" class="form-control" rows="2">{{ $m[2] }}</textarea>
 					<br>
 				@endif
 			@endforeach
 			</div>
 		@else
-			<textarea name="{{ (empty($parents) ? $key : implode('__', $parents)."__{$key}") }}" class="form-control" rows="2"> {{ $item }} </textarea>
+			<textarea name="{{ (empty($parents) ? $key : implode('__', $parents)."__{$key}") }}" class="form-control" rows="2">{{ $item }}</textarea>
 			<br>
 		@endif
 	</div>
