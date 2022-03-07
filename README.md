@@ -15,11 +15,8 @@ _**Note:** this interface allows the admin to directly edit the language files s
 > ### Security updates and breaking changes
 > Please **[subscribe to the Backpack Newsletter](http://backpackforlaravel.com/newsletter)** so you can find out about any security updates, breaking changes or major features. We send an email every 1-2 months.
 
-## Upgrading from 3.x to 4.x
 
-- Flags are no longer supported on the Language CRUD, until version 3 admins could browse an image for the language flag, we now recommend developers to setup those images in advance, having them in a public folder like `public\flags\en.svg` `public\flags\ro.svg`.
-
-## Install in Backpack 4.1 or 5.0 (Laravel 6, 7, 8 or 9)
+## Install in Backpack 5.x or 4.1 (Laravel 6, 7, 8 or 9)
 
 ### Step 1. Install via Composer
 
@@ -51,37 +48,10 @@ Add a menu item for it in resources/views/vendor/backpack/base/inc/sidebar.blade
 </li>
 ```
 
-## Install in Backpack 4.0 (Laravel 5.8, 6 or 7)
+## Upgrading from 3.x to 4.x
 
-### Step 1. Install via Composer
+- Flags are no longer supported on the Language CRUD, until version 3 admins could browse an image for the language flag, we now recommend developers to setup those images in advance, having them in a public folder like `public\flags\en.svg` `public\flags\ro.svg`.
 
-``` bash
-composer require backpack/langfilemanager:"^2.0"
-```
-
-### Step 2. Run the migration, seed and file publishing
-
-``` bash
-php artisan vendor:publish --provider="Backpack\LangFileManager\LangFileManagerServiceProvider" --tag="migrations" #publish the migration file
-php artisan migrate
-php artisan db:seed --class="Backpack\LangFileManager\database\seeds\LanguageTableSeeder"
-php artisan vendor:publish --provider="Backpack\LangFileManager\LangFileManagerServiceProvider" --tag="config" #publish the config file
-php artisan vendor:publish --provider="Backpack\LangFileManager\LangFileManagerServiceProvider" --tag="lang" #publish the lang files
-```
-
-### Step 3. Add menu items for it
-
-Add a menu item for it in resources/views/vendor/backpack/base/inc/sidebar.blade.php:
-
-```html
-<li class="nav-item nav-dropdown">
-  <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon fa fa-globe"></i> Translations</a>
-  <ul class="nav-dropdown-items">
-    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('language') }}"><i class="nav-icon fa fa-flag-checkered"></i> Languages</a></li>
-    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('language/texts') }}"><i class="nav-icon fa fa-language"></i> Site texts</a></li>
-  </ul>
-</li>
-```
 
 ## Usage
 
