@@ -65,7 +65,7 @@ class LanguageCrudController extends CrudController
         $this->crud->addField([
             'name' => 'flag',
             'label' => trans('backpack::langfilemanager.flag_image'),
-            'type' => 'browse',
+            'type' => backpack_pro() ? 'browse' : 'text',
         ]);
         $this->crud->addField([
             'name' => 'active',
