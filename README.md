@@ -15,7 +15,11 @@ _**Note:** this interface allows the admin to directly edit the language files s
 > ### Security updates and breaking changes
 > Please **[subscribe to the Backpack Newsletter](http://backpackforlaravel.com/newsletter)** so you can find out about any security updates, breaking changes or major features. We send an email every 1-2 months.
 
-## Install in Backpack 4.1 (Laravel 6 or 7)
+## Upgrading from 3.x to 4.x
+
+- Flags are no longer supported on the Language CRUD, until version 3 admins could browse an image for the language flag, we now recommend developers to setup those images in advance, having them in a public folder like `public\flags\en.svg` `public\flags\ro.svg`.
+
+## Install in Backpack 4.1 or 5.0 (Laravel 6, 7, 8 or 9)
 
 ### Step 1. Install via Composer
 
@@ -93,7 +97,7 @@ Or just try at **your-project-domain/admin/language/texts**
 
 ## Screenshots
 
-See http://laravelbackpack.com
+See https://backpackforlaravel.com/
 
 ## Change log
 
