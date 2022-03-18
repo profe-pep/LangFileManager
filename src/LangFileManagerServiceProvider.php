@@ -42,8 +42,7 @@ class LangFileManagerServiceProvider extends ServiceProvider
         // publish views
         $this->publishes([__DIR__.'/resources/views' => resource_path('views/vendor/backpack/langfilemanager')], 'views');
         // publish lang files
-        $this->publishes([__DIR__.'/resources/lang' => resource_path('lang/vendor/backpack')], 'lang');
-
+        $this->publishes([__DIR__.'/resources/lang' => lang_path('vendor/backpack')], 'lang');
         // publish the migrations and seeds
         $this->publishes([__DIR__.'/database/migrations/' => database_path('migrations')], 'migrations');
 
