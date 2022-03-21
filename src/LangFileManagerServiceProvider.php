@@ -29,7 +29,7 @@ class LangFileManagerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $langPath = function_exists('lang_path') ? lang_path('vendor/backpack') :  resource_path('lang/vendor/backpack');
+        $langPath = function_exists('lang_path') ? lang_path('vendor/backpack') : resource_path('lang/vendor/backpack');
         // LOAD THE VIEWS
         // - first the published/overwritten views (in case they have any changes)
         $this->loadViewsFrom(resource_path('views/vendor/backpack/langfilemanager'), 'langfilemanager');
