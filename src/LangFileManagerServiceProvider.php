@@ -29,6 +29,7 @@ class LangFileManagerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $langPath = function_exists('lang_path') ? lang_path('vendor/backpack') :  resource_path('lang/vendor/backpack');
         // LOAD THE VIEWS
         // - first the published/overwritten views (in case they have any changes)
         $this->loadViewsFrom(resource_path('views/vendor/backpack/langfilemanager'), 'langfilemanager');
@@ -42,12 +43,13 @@ class LangFileManagerServiceProvider extends ServiceProvider
         // publish views
         $this->publishes([__DIR__.'/resources/views' => resource_path('views/vendor/backpack/langfilemanager')], 'views');
         // publish lang files
-        $this->publishes([__DIR__.'/resources/lang' => lang_path('vendor/backpack')], 'lang');
+        $this->publishes([__DIR__.'/resources/lang' => $langPath], 'lang');
+
         // publish the migrations and seeds
         $this->publishes([__DIR__.'/database/migrations/' => database_path('migrations')], 'migrations');
 
         // use the vendor configuration file as fallback
-        $this->mergeConfigFrom(__DIR__.'/config/backpack/langfilemanager.php', 'langfilemanager');
+        $this->mergeConfigFrom(__DIR__.'/config/backpack/langfilemanager.php', 'backpack.langfilemanager');
     }
 
     /**
