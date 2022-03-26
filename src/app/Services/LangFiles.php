@@ -228,12 +228,12 @@ class LangFiles
 
     private function getFilePath()
     {
-        return base_path("resources/lang/{$this->lang}/{$this->file}.php");
+        return $this->getLangPath().'/'.$this->file.'.php';
     }
 
     private function getLangPath()
     {
-        return base_path("resources/lang/{$this->lang}/");
+        return app()->langPath().'/'.$this->lang;
     }
 
     private function var_export54($var, $indent = '')
