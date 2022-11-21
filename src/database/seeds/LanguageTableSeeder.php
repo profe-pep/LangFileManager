@@ -74,6 +74,16 @@ class LanguageTableSeeder extends Seeder
             'default'    => '0',
         ]);
 
+        DB::table('languages')->insert([
+            'name'        => 'Catalan',
+            'flag'        => '',
+            'abbr'        => 'ca',
+            'script'    => 'Latn',
+            'native'    => 'català',
+            'active'    => '0',
+            'default'    => '0',
+        ]);
+        
         $this->command->info('Language seeding successful.');
     }
 }
